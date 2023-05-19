@@ -7,15 +7,15 @@
             <span class="hacktivity-item__undisclosed-title spec-hacktivity-item-title"><span class="component-placeholder component-placeholder__text" style="width: 100px; background:#dadada"></span></span>
             {{ else }}
             {{ if eq .Params.report_url "" }}
-            <span class="daisy-link routerlink hacktivity-item__publicly-disclosed spec-hacktivity-item-title"><strong>{{ .Title }}</strong></span>
+            <span class="daisy-link hacktivity-item__publicly-disclosed spec-hacktivity-item-title"><strong>{{ .Title }}</strong></span>
             {{ else }}
-            <a class="daisy-link routerlink hacktivity-item__publicly-disclosed spec-hacktivity-item-title" href="{{ .Params.report_url }}"><strong>{{ .Title }}</strong></a>
+            <a class="daisy-link hacktivity-item__publicly-disclosed spec-hacktivity-item-title" href="{{ .Params.report_url }}"><strong>{{ .Title }}</strong></a>
             {{ end }}
             {{ end }}
             <div class="daisy-helper-text">
                 <ul class="daisy-list daisy-list--horizontal daisy-list--separator">
                     <li class="">
-                        <div style="display: inline-block;">Reported to <div style="position: relative; display: inline-block; cursor: pointer; width: fit-content;"><span><strong><span><a class="daisy-link routerlink daisy-link daisy-link--major" href="{{ .Params.vdp_url }}">{{ .Params.company }}</a></span></strong></span></div>
+                        <div style="display: inline-block;">Reported to&nbsp;<div style="position: relative; display: inline-block; cursor: pointer; width: fit-content;"><span><strong><span><a class="daisy-link" href="{{ .Params.vdp_url }}">{{ .Params.company }}</a></span></strong></span></div>
                         </div>
                     </li>
                     <li class="">
