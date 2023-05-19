@@ -43,7 +43,7 @@
                         <div class="infinite-scroll-component__outerdiv">
                             <div id="post-card-list" class="infinite-scroll-component" style="height: auto; overflow: auto;">
                                 {{ range sort $paginator.Pages "Params.bounty" "desc" }}
-                                {{ partial "postcard.html" . }}
+                                {{ partial "postcard.html" (dict "context" . "full" false) }}
                                 {{ end }}
                                 {{ if and (gt $paginator.TotalPages 1) ($paginator.HasNext) }}
                                 <div id="view-more" class="fade fade--show view-more">
