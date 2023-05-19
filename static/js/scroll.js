@@ -19,9 +19,6 @@ function load_more(nextPageUrl) {
             console.error(xhr, status, error)
         }
     })
-
-    if (++PAGE_NUMBER == Math.ceil(POST_COUNT / PAGE_SIZE))
-        $("#view-more").remove()
 }
 
 $("body").off("click").on("click", ".view-more .next-page-link", function (e) {

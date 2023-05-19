@@ -2,7 +2,7 @@
 {{ $sortedPages := (.Site.Pages.ByParam "severity") }}
 {{ $filteredPages := (where (where $sortedPages "Type" "cards") "IsPage" true) }}
 {{ $paginator := .Paginate $filteredPages }}
-<div id="page-content" style="margin-top: 16px" class="mx-auto flex w-full grow">
+<div id="page-content" class="mx-auto flex w-full grow">
     <div class="daisy-grid daisy-grid--has-outside-gutter">
         <div class="daisy-grid__row daisy-grid__row--has-gutter">
             {{ partial "aboutcard.html" }}
@@ -22,25 +22,22 @@
                 <div class="card">
                     <div class="card__heading"><strong>Hacktivity</strong></div>
                     <div class="card__content" style="padding: 0px;">
-                        <div class="infinite-scroll-component__outerdiv">
-                            <div id="post-card-list" class="infinite-scroll-component" style="height: auto; overflow: auto;">
-                                {{ range sort $paginator.Pages "Params.bounty" "desc" }}
-                                {{ partial "postcard.html" (dict "context" . "full" false) }}
-                                {{ end }}
-                                {{ if and (gt $paginator.TotalPages 1) ($paginator.HasNext) }}
-                                <div id="view-more" class="fade fade--show view-more">
-                                    <div class="hacktivity-item">
-                                        <a class="next-page-link" style="margin: auto;" class="daisy-link daisy-link spec-avatar margin-16--right" href="{{ $paginator.Next.URL }}">View more</a>
-                                    </div>
+                        <div id="post-card-list" class="infinite-scroll-component" style="height: auto; overflow: auto;">
+                            {{ range sort $paginator.Pages "Params.bounty" "desc" }}
+                            {{ partial "postcard.html" (dict "context" . "full" false) }}
+                            {{ end }}
+                            {{ if and (gt $paginator.TotalPages 1) ($paginator.HasNext) }}
+                            <div id="view-more" class="fade fade--show view-more">
+                                <div class="hacktivity-item">
+                                    <a class="next-page-link" style="margin: auto;" class="daisy-link daisy-link spec-avatar margin-16--right" href="{{ $paginator.Next.URL }}">View more</a>
                                 </div>
-                                {{ end }}
                             </div>
+                            {{ end }}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <script defer>const PAGE_SIZE=10,POST_COUNT=8;let PAGE_NUMBER=1</script>
 </div>
 {{ end }}

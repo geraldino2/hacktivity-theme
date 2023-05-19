@@ -2290,3 +2290,7 @@ a:hover {
     --dynamic-topbar-height: 0;
     --dynamic-vertical-nav-width: 0
 }
+
+#page-content {
+    margin-top: 16px;
+}

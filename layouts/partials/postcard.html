@@ -1,49 +1,49 @@
 <div class="fade fade--show">
-    <div class="hacktivity-item"><a class="daisy-link daisy-link spec-avatar margin-16--right" href="{{ .context.Params.vdp_url }}" target="_blank" rel="noopener noreferrer">
+    <div class="hacktivity-item"><a class="daisy-link daisy-link margin-16--right" href="{{ .context.Params.vdp_url }}" target="_blank" rel="noopener noreferrer">
             <div><img class="daisy-avatar daisy-avatar--medium" src="{{ .context.Params.company_avatar }}" alt="{{ .context.Params.company }}" title="{{ .context.Params.company }}"></div>
         </a>
-        <div class="spec-hacktivity-content">
+        <div>
             {{ if eq .context.Title "" }}
-            <span class="hacktivity-item__undisclosed-title spec-hacktivity-item-title"><span class="component-placeholder component-placeholder__text" style="width: 100px; background:#dadada"></span></span>
+            <span class="component-placeholder__text" style="width: 100px; background:#dadada"></span>
             {{ else }}
             {{ if eq .context.Params.report_url "" }}
-            <span class="daisy-link hacktivity-item__publicly-disclosed spec-hacktivity-item-title"><strong>{{ .context.Title }}</strong></span>
+            <span class="daisy-link"><strong>{{ .context.Title }}</strong></span>
             {{ else }}
-            <a class="daisy-link hacktivity-item__publicly-disclosed spec-hacktivity-item-title" href="{{ .context.Params.report_url }}" target="_blank" rel="noopener noreferrer"><strong>{{ .context.Title }}</strong></a>
+            <a class="daisy-link" href="{{ .context.Params.report_url }}" target="_blank" rel="noopener noreferrer"><strong>{{ .context.Title }}</strong></a>
             {{ end }}
             {{ end }}
             <div class="daisy-helper-text">
                 <ul class="daisy-list daisy-list--horizontal daisy-list--separator">
-                    <li class="">
+                    <li>
                         <div style="display: inline-block;">Reported to&nbsp;<div style="position: relative; display: inline-block; cursor: pointer; width: fit-content;"><span><strong><span><a class="daisy-link" href="{{ .context.Params.vdp_url }}" target="_blank" rel="noopener noreferrer">{{ .context.Params.company }}</a></span></strong></span></div>
                         </div>
                     </li>
-                    <li class="">
+                    <li>
                         <div display="inline-flex" class="daisy-tag-indicator">
                             <div class="daisy-severity-indicator margin-5--right" width="26" height="8">
                             {{ if eq .context.Params.severity "P4" }}
                                 <div height="8" class="daisy-severity-indicator__progress daisy-severity-indicator__progress--LOW"></div>
                             </div>
-                            <div class="daisy-severity-label spec-severity-rating">Low</div>
+                            <span>Low</span>
                             {{ else if eq .context.Params.severity "P3" }}
                                 <div height="8" class="daisy-severity-indicator__progress daisy-severity-indicator__progress--MEDIUM"></div>
                             </div>
-                            <div class="daisy-severity-label spec-severity-rating">Medium</div>
+                            <span>Medium</span>
                             {{ else if eq .context.Params.severity "P2" }}
                                 <div height="8" class="daisy-severity-indicator__progress daisy-severity-indicator__progress--HIGH"></div>
                             </div>
-                            <div class="daisy-severity-label spec-severity-rating">High</div>
+                            <span>High</span>
                             {{ else if eq .context.Params.severity "P1" }}
                                 <div height="8" class="daisy-severity-indicator__progress daisy-severity-indicator__progress--CRITICAL"></div>
                             </div>
-                            <div class="daisy-severity-label spec-severity-rating">Critical</div>
+                            <span>Critical</span>
                             {{ end }}
                         </div>
                     </li>
                     {{ if not (eq .context.Params.bounty 0) }}
-                    <li class=""><strong class="spec-hacktivity-item-bounty">{{ .context.Params.bounty | lang.FormatAccounting 2 "USD" }}</strong></li>
+                    <li><strong>{{ .context.Params.bounty | lang.FormatAccounting 2 "USD" }}</strong></li>
                     {{ end }}
-                    <li class=""><span class="spec-hacktivity-item-timestamp">{{ .context.Params.datetime }}</span></li>
+                    <li>{{ .context.Params.datetime }}</li>
                 </ul>
             </div>
             {{ if not (eq .context.Content "")}}
@@ -53,7 +53,7 @@
                 {{ else }}
                     <div class="vertical-spacing interactive_markdown__p">{{ .context.Summary }}</div>
                     {{ if .context.Truncated }}
-                    <a class="daisy-link daisy-link spec-avatar margin-16--right" href="{{ .context.RelPermalink }}" target="_blank" rel="noopener noreferrer">Read more</a>
+                    <a class="daisy-link daisy-link margin-16--right" href="{{ .context.RelPermalink }}" target="_blank" rel="noopener noreferrer">Read more</a>
                     {{ end }}
                 {{ end }}
             </div>
