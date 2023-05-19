@@ -4,7 +4,7 @@
         </a>
         <div>
             {{ if eq .context.Title "" }}
-                <span class="component-placeholder__text" style="width: 100px; background:#dadada"></span>
+                <span class="component-placeholder__text censored-title"></span>
             {{ else }}
                 {{ if eq .context.Params.report_url "" }}
                 <span class="daisy-link"><strong>{{ .context.Title }}</strong></span>
@@ -15,7 +15,11 @@
             <div class="daisy-helper-text">
                 <ul class="daisy-list daisy-list--horizontal daisy-list--separator">
                     <li>
-                        <div style="display: inline-block;">Reported to&nbsp;<div style="position: relative; display: inline-block; cursor: pointer; width: fit-content;"><span><strong><span><a class="daisy-link" href="{{ .context.Params.vdp_url }}" target="_blank" rel="noopener noreferrer">{{ .context.Params.company }}</a></span></strong></span></div>
+                        <div>
+                            <span>Reported to&nbsp;</span>
+                            <div class="company-name">
+                                <a class="daisy-link" href="{{ .context.Params.vdp_url }}" target="_blank" rel="noopener noreferrer">{{ .context.Params.company }}</a>
+                            </div>
                         </div>
                     </li>
                     <li>
@@ -47,7 +51,7 @@
                 </ul>
             </div>
             {{ if or (not (eq .context.Content "")) (not (eq .context.Summary "")) }}
-                <div class="interactive-markdown text-sm mt-spacing-4" style="position: relative;">
+                <div class="interactive-markdown text-sm mt-spacing-4">
                     {{ if .full }}
                         {{ if not (eq .context.Summary "") }}
                             <div class="vertical-spacing interactive_markdown__p"><strong>Summary: </strong>{{ .context.Summary }}</div>

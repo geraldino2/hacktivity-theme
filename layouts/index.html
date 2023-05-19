@@ -2,7 +2,7 @@
 {{ $sortedPages := (.Site.Pages.ByParam "severity") }}
 {{ $filteredPages := (where (where $sortedPages "Type" "cards") "IsPage" true) }}
 {{ $paginator := .Paginate $filteredPages }}
-<div id="page-content" class="mx-auto flex w-full grow">
+<div class="mx-auto flex w-full grow page-content">
     <div class="daisy-grid daisy-grid--has-outside-gutter">
         <div class="daisy-grid__row daisy-grid__row--has-gutter">
             {{ partial "aboutcard.html" }}
@@ -10,7 +10,7 @@
                 <div class="card">
                     <div class="card__heading"><strong>Summary</strong></div>
                     <div class="card__content">
-                        <div class="interactive-markdown" style="position: relative;">
+                        <div class="interactive-markdown">
                             <div class="vertical-spacing interactive_markdown__p">
                                 This website currently contains {{ $filteredPages | len }} security reports written by me and is being regularly updated. Some reports may contain censored information, as a company might not agree to disclose it.
                                 <br><br>
@@ -21,19 +21,17 @@
                 </div>
                 <div class="card">
                     <div class="card__heading"><strong>Hacktivity</strong></div>
-                    <div class="card__content" style="padding: 0px;">
-                        <div id="post-card-list" class="infinite-scroll-component" style="height: auto; overflow: auto;">
-                            {{ range sort $paginator.Pages "Params.bounty" "desc" }}
-                            {{ partial "postcard.html" (dict "context" . "full" false) }}
-                            {{ end }}
-                            {{ if and (gt $paginator.TotalPages 1) ($paginator.HasNext) }}
-                            <div id="view-more" class="fade fade--show view-more">
-                                <div class="hacktivity-item">
-                                    <a class="next-page-link" style="margin: auto;" class="daisy-link daisy-link spec-avatar margin-16--right" href="{{ $paginator.Next.URL }}">View more</a>
-                                </div>
+                    <div id="post-card-list" class="infinite-scroll-component">
+                        {{ range sort $paginator.Pages "Params.bounty" "desc" }}
+                        {{ partial "postcard.html" (dict "context" . "full" false) }}
+                        {{ end }}
+                        {{ if and (gt $paginator.TotalPages 1) ($paginator.HasNext) }}
+                        <div id="view-more" class="fade fade--show view-more">
+                            <div class="hacktivity-item">
+                                <a class="daisy-link daisy-link spec-avatar margin-16--right next-page-link" href="{{ $paginator.Next.URL }}">View more</a>
                             </div>
-                            {{ end }}
                         </div>
+                        {{ end }}
                     </div>
                 </div>
             </div>

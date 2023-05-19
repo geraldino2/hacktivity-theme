@@ -339,7 +339,8 @@ img {
 .interactive-markdown {
     font-size: 16px;
     line-height: 24px;
-    word-break: break-word
+    word-break: break-word;
+    position: relative;
 }
 
 
@@ -2291,6 +2292,32 @@ a:hover {
     --dynamic-vertical-nav-width: 0
 }
 
-#page-content {
+.page-content {
     margin-top: 16px;
+}
+
+#post-card-list {
+    height: auto;
+    overflow: auto;
+    padding: 0px;
+}
+
+.next-page-link {
+    margin: auto;
+}
+
+.censored-title {
+    width: 100px;
+    background:#dadada;
+}
+
+.company-name {
+    display: inline-block;
+    font-weight: 600;
+}
+
+.about-card {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }

@@ -7,18 +7,16 @@
 </html>
 
 {{ define "main" }}
-<div id="page-content" style="margin-top: 16px" class="mx-auto flex w-full grow">
+<div id="page-content" class="mx-auto flex w-full grow">
     <div class="daisy-grid daisy-grid--has-outside-gutter">
         <div class="daisy-grid__row daisy-grid__row--has-gutter">
             {{ partial "aboutcard.html" }}
             <div class="daisy-grid__column">
                 <div class="card">
                     <div class="card__heading"><strong>Writeup</strong></div>
-                    <div class="card__content" style="padding: 0px;">
-                        <div id="post-card-list" class="infinite-scroll-component" style="height: auto; overflow: auto;">
-                            {{ partial "postcard.html" (dict "context" . "full" true) }}
-                            {{ end }}
-                        </div>
+                    <div id="post-card-list" class="infinite-scroll-component">
+                        {{ partial "postcard.html" (dict "context" . "full" true) }}
+                        {{ end }}
                     </div>
                 </div>
             </div>
