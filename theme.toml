@@ -1,0 +1,12 @@
+name = "Hacktivity"
+license = "Unlicense"
+licenselink = "https://github.com/geraldino2/hacktivity/blob/master/LICENSE"
+description = "A minimal hacktivity portfolio theme"
+homepage = "https://hacktivity.geraldino2.com/"
+tags = ["Gallery", "Portfolio", "Minimal", "Responsive", "Hacktivity"]
+features = []
+min_version = "0.101.0"
+
+[author]
+  name = "Gabriel Geraldino"
+  homepage = "https://geraldino2.com"

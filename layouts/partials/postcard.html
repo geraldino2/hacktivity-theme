@@ -1,0 +1,57 @@
+<div class="fade fade--show">
+    <div class="hacktivity-item"><a class="daisy-link daisy-link spec-avatar margin-16--right" href="{{ .Params.vdp_url }}" target="" rel="">
+            <div><img class="daisy-avatar daisy-avatar--medium" src="{{ .Params.company_avatar }}" alt="{{ .Params.company }}" title="HackerOne"></div>
+        </a>
+        <div class="spec-hacktivity-content">
+            {{ if eq .Title "" }}
+            <span class="hacktivity-item__undisclosed-title spec-hacktivity-item-title"><span class="component-placeholder component-placeholder__text" style="width: 100px; background:#dadada"></span></span>
+            {{ else }}
+            {{ if eq .Params.report_url "" }}
+            <span class="daisy-link routerlink hacktivity-item__publicly-disclosed spec-hacktivity-item-title"><strong>{{ .Title }}</strong></span>
+            {{ else }}
+            <a class="daisy-link routerlink hacktivity-item__publicly-disclosed spec-hacktivity-item-title" href="{{ .Params.report_url }}"><strong>{{ .Title }}</strong></a>
+            {{ end }}
+            {{ end }}
+            <div class="daisy-helper-text">
+                <ul class="daisy-list daisy-list--horizontal daisy-list--separator">
+                    <li class="">
+                        <div style="display: inline-block;">Reported to <div style="position: relative; display: inline-block; cursor: pointer; width: fit-content;"><span><strong><span><a class="daisy-link routerlink daisy-link daisy-link--major" href="{{ .Params.vdp_url }}">{{ .Params.company }}</a></span></strong></span></div>
+                        </div>
+                    </li>
+                    <li class="">
+                        <div display="inline-flex" class="daisy-tag-indicator">
+                            <div class="daisy-severity-indicator margin-5--right" width="26" height="8">
+                            {{ if eq .Params.severity "P4" }}
+                                <div height="8" class="daisy-severity-indicator__progress daisy-severity-indicator__progress--LOW"></div>
+                            </div>
+                            <div class="daisy-severity-label spec-severity-rating">Low</div>
+                            {{ else if eq .Params.severity "P3" }}
+                                <div height="8" class="daisy-severity-indicator__progress daisy-severity-indicator__progress--MEDIUM"></div>
+                            </div>
+                            <div class="daisy-severity-label spec-severity-rating">Medium</div>
+                            {{ else if eq .Params.severity "P2" }}
+                                <div height="8" class="daisy-severity-indicator__progress daisy-severity-indicator__progress--HIGH"></div>
+                            </div>
+                            <div class="daisy-severity-label spec-severity-rating">High</div>
+                            {{ else if eq .Params.severity "P1" }}
+                                <div height="8" class="daisy-severity-indicator__progress daisy-severity-indicator__progress--CRITICAL"></div>
+                            </div>
+                            <div class="daisy-severity-label spec-severity-rating">Critical</div>
+                            {{ end }}
+                        </div>
+                    </li>
+                    {{ if not (eq .Params.bounty 0) }}
+                    <li class=""><strong class="spec-hacktivity-item-bounty">{{ .Params.bounty | lang.FormatAccounting 2 "USD" }}</strong></li>
+                    {{ end }}
+                    <li class=""><span class="spec-hacktivity-item-timestamp">{{ .Params.datetime }}</span></li>
+                </ul>
+            </div>
+            {{ if not (eq .Content "")}}
+            <div class="interactive-markdown text-sm mt-spacing-4" style="position: relative;">
+                <div class="vertical-spacing interactive_markdown__p">{{ .Summary }}</div>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+    <hr class="daisy-separator daisy-separator--no-spacing">
+</div>
