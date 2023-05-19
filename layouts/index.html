@@ -26,15 +26,19 @@
             </div>
             <div class="daisy-grid__column">
                 <div class="card">
-                    <div class="card__heading">Summary</div>
+                    <div class="card__heading"><strong>Summary</strong></div>
                     <div class="card__content">
                         <div class="interactive-markdown" style="position: relative;">
-                            <div class="vertical-spacing interactive_markdown__p"><span id="postcount">{{ $filteredPages | len }}</span> reports.</div>
+                            <div class="vertical-spacing interactive_markdown__p">
+                                This website currently contains {{ $filteredPages | len }} security reports written by me and is being regularly updated. Some reports may contain censored information, as a company might not agree to disclose it.
+                                <br><br>
+                                If you like this page and would like to have a similar one, an open source Hugo theme is available <a class="daisy-link" href="https://github.com/geraldino2/hacktivity"><strong>here</strong></a>.
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="card">
-                    <div class="card__heading">Hacktivity</div>
+                    <div class="card__heading"><strong>Hacktivity</strong></div>
                     <div class="card__content" style="padding: 0px;">
                         <div class="infinite-scroll-component__outerdiv">
                             <div id="post-card-list" class="infinite-scroll-component" style="height: auto; overflow: auto;">
