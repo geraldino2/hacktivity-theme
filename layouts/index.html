@@ -1,6 +1,6 @@
 {{ define "main" }}
 {{ $sortedPages := (.Site.Pages.ByParam "severity") }}
-{{ $filteredPages := (where (where $sortedPages "Type" "cards") "IsPage" true) }}
+{{ $filteredPages := (where (where $sortedPages "Type" "posts") "IsPage" true) }}
 {{ $paginator := .Paginate $filteredPages }}
 <div class="mx-auto flex w-full grow page-content">
     <div class="daisy-grid daisy-grid--has-outside-gutter">
