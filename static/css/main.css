@@ -239,7 +239,7 @@ img {
     font-family: Effra;
     font-style: normal;
     font-weight: 300;
-    src: local("#"), url(/assets/static/media/effra-light.woff) format("woff")
+    src: local("#"), url(/fonts/effra-light.woff) format("woff")
 }
 
 @font-face {
