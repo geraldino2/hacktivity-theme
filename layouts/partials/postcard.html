@@ -4,12 +4,12 @@
         </a>
         <div>
             {{ if eq .context.Title "" }}
-            <span class="component-placeholder__text" style="width: 100px; background:#dadada"></span>
+                <span class="component-placeholder__text" style="width: 100px; background:#dadada"></span>
             {{ else }}
-            {{ if eq .context.Params.report_url "" }}
-            <span class="daisy-link"><strong>{{ .context.Title }}</strong></span>
-            {{ else }}
-            <a class="daisy-link" href="{{ .context.Params.report_url }}" target="_blank" rel="noopener noreferrer"><strong>{{ .context.Title }}</strong></a>
+                {{ if eq .context.Params.report_url "" }}
+                <span class="daisy-link"><strong>{{ .context.Title }}</strong></span>
+                {{ else }}
+                <a class="daisy-link" href="{{ .context.Params.report_url }}" target="_blank" rel="noopener noreferrer"><strong>{{ .context.Title }}</strong></a>
             {{ end }}
             {{ end }}
             <div class="daisy-helper-text">
@@ -41,22 +41,29 @@
                         </div>
                     </li>
                     {{ if not (eq .context.Params.bounty 0) }}
-                    <li><strong>{{ .context.Params.bounty | lang.FormatAccounting 2 "USD" }}</strong></li>
+                        <li><strong>{{ .context.Params.bounty | lang.FormatAccounting 2 "USD" }}</strong></li>
                     {{ end }}
                     <li>{{ .context.Params.datetime }}</li>
                 </ul>
             </div>
-            {{ if not (eq .context.Content "")}}
-            <div class="interactive-markdown text-sm mt-spacing-4" style="position: relative;">
-                {{ if .full }}
-                    <div class="vertical-spacing interactive_markdown__p">{{ .context.Content }}</div>
-                {{ else }}
-                    <div class="vertical-spacing interactive_markdown__p">{{ .context.Summary }}</div>
-                    {{ if .context.Truncated }}
-                    <a class="daisy-link daisy-link margin-16--right" href="{{ .context.RelPermalink }}" target="_blank" rel="noopener noreferrer">Read more</a>
+            {{ if or (not (eq .context.Content "")) (not (eq .context.Summary "")) }}
+                <div class="interactive-markdown text-sm mt-spacing-4" style="position: relative;">
+                    {{ if .full }}
+                        {{ if not (eq .context.Summary "") }}
+                            <div class="vertical-spacing interactive_markdown__p"><strong>Summary: </strong>{{ .context.Summary }}</div>
+                        {{ end }}
+                        {{ if not (eq .context.Content "") }}
+                            <div class="vertical-spacing interactive_markdown__p">{{ .context.Content }}</div>
+                        {{ end }}
+                    {{ else }}
+                        {{ if not (eq .context.Summary "") }}
+                            <div class="vertical-spacing interactive_markdown__p">{{ .context.Summary }}</div>
+                        {{ end }}
+                        {{ if not (eq .context.Content "") }}
+                            <a class="daisy-link daisy-link margin-16--right" href="{{ .context.RelPermalink }}" target="_blank" rel="noopener noreferrer">Read writeup</a>
+                        {{ end }}
                     {{ end }}
-                {{ end }}
-            </div>
+                </div>
             {{ end }}
         </div>
     </div>
