@@ -48,6 +48,7 @@
                         <li><strong>{{ .context.Params.bounty | lang.FormatAccounting 2 "USD" }}</strong></li>
                     {{ end }}
                     <li>{{ .context.Params.datetime }}</li>
+                    <li><a href="{{ .context.RelPermalink }}"><img src="/img/permalink.png" class="permalink"></a></li>
                 </ul>
             </div>
             {{ if or (not (eq .context.Content "")) (not (eq .context.Summary "")) }}

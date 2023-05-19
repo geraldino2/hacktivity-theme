@@ -2321,3 +2321,9 @@ a:hover {
     align-items: center;
     flex-direction: column;
 }
+
+.permalink {
+    width: 16px;
+    height: 16px;
+    margin-top: -1px;
+}
