@@ -1,7 +1,7 @@
 {{ define "main" }}
-{{ $sortedPages := (.Site.Pages.ByParam "severity") }}
-{{ $filteredPages := (where (where $sortedPages "Type" "posts") "IsPage" true) }}
-{{ $paginator := .Paginate $filteredPages }}
+{{ $sortedPages := (sort site.RegularPages "Params.bounty" "desc") }}
+{{ $sortedPages := (sort $sortedPages "Params.severity") }}
+{{ $paginator := .Paginate $sortedPages }}
 <div class="mx-auto flex w-full grow page-content">
     <div class="daisy-grid daisy-grid--has-outside-gutter">
         <div class="daisy-grid__row daisy-grid__row--has-gutter">
@@ -12,7 +12,7 @@
                     <div class="card__content">
                         <div class="interactive-markdown">
                             <div class="vertical-spacing interactive_markdown__p">
-                                This website currently contains {{ $filteredPages | len }} security reports written by me and is being regularly updated. Some reports may contain censored information, as a company might not agree to disclose it.
+                                This website currently contains {{ $sortedPages | len }} security reports written by me and is being regularly updated. Some reports may contain censored information, as a company might not agree to disclose it.
                                 <br><br>
                                 If you like this page and would like to have a similar one, an open source Hugo theme is available <a class="daisy-link" href="https://github.com/geraldino2/hacktivity"><strong>here</strong></a>.
                             </div>
@@ -22,7 +22,7 @@
                 <div class="card">
                     <div class="card__heading"><strong>Hacktivity</strong></div>
                     <div id="post-card-list" class="infinite-scroll-component">
-                        {{ range sort $paginator.Pages "Params.bounty" "desc" }}
+                        {{ range sort $paginator.Pages }}
                         {{ partial "postcard.html" (dict "context" . "full" false) }}
                         {{ end }}
                         {{ if and (gt $paginator.TotalPages 1) ($paginator.HasNext) }}
