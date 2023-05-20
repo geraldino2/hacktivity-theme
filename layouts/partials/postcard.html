@@ -7,10 +7,10 @@
                 <span class="component-placeholder__text censored-title"></span>
             {{ else }}
                 {{ if eq .context.Params.report_url "" }}
-                <span class="daisy-link"><strong>{{ .context.Title }}</strong></span>
+                    <strong>{{ .context.Title }}</strong>
                 {{ else }}
-                <a class="daisy-link" href="{{ .context.Params.report_url }}" target="_blank" rel="noopener noreferrer"><strong>{{ .context.Title }}</strong></a>
-            {{ end }}
+                    <a class="daisy-link" href="{{ .context.Params.report_url }}" target="_blank" rel="noopener noreferrer"><strong>{{ .context.Title }}</strong></a>
+                {{ end }}
             {{ end }}
             <div class="daisy-helper-text">
                 <ul class="daisy-list daisy-list--horizontal daisy-list--separator">
