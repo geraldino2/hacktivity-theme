@@ -1,5 +1,5 @@
 ---
-title: "Stored XSS at GET https://example.com/reflect `payload` field"
+title: "Stored XSS at GET https://example.com/reflect `payload` field"  #█
 datetime: {{ .Date | time.Format ":date_medium" }}
 severity: "P1" #P1->P4
 bounty: 100 #USD
