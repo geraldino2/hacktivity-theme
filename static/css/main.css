@@ -2329,10 +2329,6 @@ a:hover {
 }
 
 .footer {
-    margin: auto;
-    width: 100%;
     text-align: center;
-    bottom: 0%;
-    position: relative;
     padding: 16px;
 }
