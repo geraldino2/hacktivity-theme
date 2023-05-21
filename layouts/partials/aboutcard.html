@@ -2,7 +2,9 @@
     <div class="card">
         <div class="card__content">
             <div class="about-card">
-                <div><img class="daisy-avatar daisy-avatar--large" src="/img/avatar.jpg" alt="apolo2" title="Gabriel Geraldino"></div>
+                {{ $image := resources.GetMatch "/img/avatar.jpg" }}
+                {{ $image := $image.Resize "100x jpeq q100" }}
+                <div><img class="daisy-avatar daisy-avatar--large" src="{{ $image.RelPermalink }}" alt="apolo2" title="Gabriel Geraldino"></div>
                 <div><strong>Gabriel Geraldino (apolo2)</strong></div>
                 <a class="daisy-link break-all" href="https://geraldino2.com" rel="noreferrer nofollow">https://geraldino2.com</a>
                 <a class="daisy-link break-all" href="mailto:gabriel@geraldino2.com" rel="noreferrer nofollow">gabriel@geraldino2.com</a>

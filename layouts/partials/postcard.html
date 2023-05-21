@@ -1,6 +1,11 @@
 <div class="fade fade--show">
     <div class="hacktivity-item"><a class="daisy-link daisy-link margin-16--right" href="{{ .context.Params.vdp_url }}" target="_blank" rel="noopener noreferrer">
-            <div><img class="daisy-avatar daisy-avatar--medium" src="{{ .context.Params.company_avatar }}" alt="{{ .context.Params.company }}" title="{{ .context.Params.company }}"></div>
+            <div>
+                {{ $imagePath := .context.Params.company_avatar }}
+                {{ $image := resources.GetMatch $imagePath }}
+                {{ $image = $image.Resize "40x jpeg q100" }}
+                <img class="daisy-avatar daisy-avatar--medium" src="{{ $image.RelPermalink }}" alt="{{ .context.Params.company }}" title="{{ .context.Params.company }}">
+            </div>
         </a>
         <div>
             {{ if eq .context.Title "" }}
