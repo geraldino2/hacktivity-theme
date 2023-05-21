@@ -2327,3 +2327,12 @@ a:hover {
     height: 16px;
     margin-top: -1px;
 }
+
+.footer {
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    bottom: 0%;
+    position: relative;
+    padding: 16px;
+}

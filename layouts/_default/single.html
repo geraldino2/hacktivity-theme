@@ -15,12 +15,12 @@
                 <div class="card">
                     <div class="card__heading"><strong>Writeup</strong></div>
                     <div id="post-card-list" class="infinite-scroll-component">
-                        {{ partial "postcard.html" (dict "context" . "full" true) }}
-                        {{ end }}
+                        {{ partial "postcard.html" (dict "context" . "full" true) }}               
                     </div>
                 </div>
+                {{- partial "footer.html" . -}}
             </div>
         </div>
     </div>
 </div>
-
+{{ end }}
