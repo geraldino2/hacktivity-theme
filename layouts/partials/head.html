@@ -1,9 +1,15 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Security-Policy" content="base-uri 'none'; default-src 'none'; style-src 'self'; script-src 'self'; img-src *; media-src *; font-src 'self'; connect-src *; worker-src 'none'; frame-src 'none'; form-action 'none';"/>
-    <link rel="stylesheet" href="/css/main.css">
-    <script src="/js/jquery-3.7.0.min.js" defer></script>
-    <script src="/js/scroll.js" defer></script>
+    {{ $css := resources.Get "/css/main.css" }}
+    {{ $css := $css | resources.Minify }}
+    <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+    {{ $jqueryjs := resources.Get "/js/jquery-3.7.0.min.js" }}
+    {{ $jqueryjs := $jqueryjs | resources.Minify }}
+    <script src="{{ $jqueryjs.RelPermalink }}" defer></script>
+    {{ $scrolljs := resources.Get "/js/scroll.js" }}
+    {{ $scrolljs := $scrolljs | resources.Minify }}
+    <script src="{{ $scrolljs.RelPermalink }}" defer></script>
     {{ $title := print .Site.Title " | " .Title }}
     {{ if .IsHome }}{{ $title = .Site.Title }}{{ end }}
     <title>{{ $title }}</title>
